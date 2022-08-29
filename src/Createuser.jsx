@@ -1,10 +1,13 @@
 import React from 'react'
 import { useFormik } from 'formik';
-import { Link } from "react-router-dom";
+
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 
 function CreateUser() {
+
+  const navigate =useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -44,6 +47,7 @@ function CreateUser() {
     onSubmit : async (values) => {
    let users = await axios.post("https://6300f2429a1035c7f8fb32ef.mockapi.io/users/users", values);
    alert("User has created done")
+   navigate("/portal/users")
 
     }
   })

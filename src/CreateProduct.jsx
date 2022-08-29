@@ -2,9 +2,12 @@ import React from 'react'
 import { useFormik } from 'formik';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import Products from './Product';
+import {useNavigate} from  "react-router-dom";
 
 function CreateProduct() {
+
+const navigate = useNavigate()
+
 
   const formik = useFormik({
     initialValues: {
@@ -51,6 +54,8 @@ function CreateProduct() {
     onSubmit: async (values) => {
      let products = await axios.post("https://6300f2429a1035c7f8fb32ef.mockapi.io/users/products", values)
    alert("Product has created done")
+navigate("/portal/products")
+
     }
   })
   return (
